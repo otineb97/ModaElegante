@@ -63,3 +63,13 @@ body {
 .carousel-control-next {
   right: 1%;
 }
+
+/* Estilos para los comentarios */
+.stars {
+  color: gold;
+}
+
+.eliminar-icono {
+  color: red;
+  cursor: pointer;
+}
