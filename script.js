@@ -22,27 +22,35 @@ $(document).ready(function () {
     });
 });
 
-// Cambiar imágenes al hacer clic en miniaturas
+// Galeria de imagenes del producto en miniatura
+const images = [
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300',
+];
+
+// Función para cambiar la imagen principal al hacer clic en una miniatura
+function changeImage(image) {
+    document.getElementById('product-image-container').innerHTML = `<img src="${image}" class="img-fluid" alt="Product Image">`;
+}
+
+// Crear miniaturas y mostrar la primera imagen al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
-    const productThumbnailsContainer = document.getElementById('product-thumbnails');
-    const mainProductImage = document.getElementById('main-product-image');
+    const thumbnailContainer = document.getElementById('thumbnail-container');
+    const productImageContainer = document.getElementById('product-image-container');
 
-    // Lista de imágenes de muestra
-    const imageList = [
-        'https://via.placeholder.com/300',
-        'https://via.placeholder.com/200',
-        'https://via.placeholder.com/100'
-    ];
-
-    imageList.forEach((imageUrl, index) => {
+    images.forEach((image, index) => {
         const thumbnail = document.createElement('img');
-        thumbnail.src = imageUrl;
+        thumbnail.src = image;
+        thumbnail.alt = `Thumbnail ${index + 1}`;
         thumbnail.classList.add('thumbnail', 'mb-2');
-        thumbnail.addEventListener('click', () => {
-            mainProductImage.src = imageUrl;
-        });
-        productThumbnailsContainer.appendChild(thumbnail);
+        thumbnail.addEventListener('click', () => changeImage(image));
+        thumbnailContainer.appendChild(thumbnail);
     });
+
+    // Mostrar la primera imagen al cargar la página
+    productImageContainer.innerHTML = `<img src="${images[0]}" class="img-fluid" alt="Product Image">`;
 });
 
 // Comentarios de usuarios
